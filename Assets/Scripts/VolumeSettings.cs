@@ -34,9 +34,16 @@ public class VolumeSettings : MonoBehaviour
         _backgriundMusicSlider.onValueChanged.RemoveListener(SetBackgroundVolume);
     }
 
-    private void SetOverallVolume(float volume) => _audioMixer.SetFloat(OverallVolume, Mathf.Log10(volume) * 20);
+    private void SetOverallVolume(float volume) => SetVolume(OverallVolume, volume);
 
-    private void SetButtonVolume(float volume) => _audioMixer.SetFloat(ButtonVolume, Mathf.Log10(volume) * 20);
+    private void SetButtonVolume(float volume) => SetVolume(ButtonVolume, volume);
 
-    private void SetBackgroundVolume(float volume) => _audioMixer.SetFloat(BackgroundVolume, Mathf.Log10(volume) * 20);
+    private void SetBackgroundVolume(float volume) => SetVolume(BackgroundVolume, volume);
+
+    private void SetVolume(string parameterAudioMixer, float volume)
+    {
+        float value = Mathf.Log10(volume) * 20;
+
+        _audioMixer.SetFloat(parameterAudioMixer, value);
+    }
 }
