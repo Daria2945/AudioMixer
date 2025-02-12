@@ -9,25 +9,35 @@ public class AudioSwich : MonoBehaviour
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(OnButtonPress);
+        _button.onClick.AddListener(SetActivity);
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(OnButtonPress);
+        _button.onClick.AddListener(SetActivity);
     }
 
-    private void OnButtonPress()
+    private void SetActivity()
     {
         if (_isMute)
         {
-            _isMute = false;
-            AudioListener.pause = false;
+            PlaySound();
         }
         else
         {
-            _isMute = true;
-            AudioListener.pause = true;
+            StopSound();
         }
+    }
+
+    private void PlaySound()
+    {
+        _isMute = false;
+        AudioListener.pause = false;
+    }
+
+    private void StopSound()
+    {
+        _isMute = true;
+        AudioListener.pause = true;
     }
 }

@@ -28,5 +28,6 @@ public class MusicButton : MonoBehaviour
         _button.onClick.RemoveListener(InvokeClickedEvent);
     }
 
-    private void InvokeClickedEvent() => Clicked?.Invoke(this);
+    private void InvokeClickedEvent() =>
+        Clicked?.Invoke(this);
 }

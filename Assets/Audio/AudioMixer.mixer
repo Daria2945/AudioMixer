@@ -54,7 +54,7 @@ AudioMixerController:
   - guid: 8d376cb240943264bb679f5ae360822a
     name: ButtonVolume
   - guid: e753f1b13efe85d4e8dea1ddb2c023ca
-    name: OverallVolume
+    name: MasterVolume
   m_AudioMixerGroupViews:
   - guids:
     - e2baec3bb89887d40a6f954ccaef31b4
