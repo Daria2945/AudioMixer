@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,12 +5,9 @@ using UnityEngine.UI;
 public class MusicButton : MonoBehaviour
 {
     [SerializeField] private AudioClip _clip;
+    [SerializeField] private AudioSource _buttonsSoundSource;
 
     private Button _button;
-
-    public AudioClip Clip => _clip;
-
-    public event Action<MusicButton> Clicked;
 
     private void Awake()
     {
@@ -20,14 +16,16 @@ public class MusicButton : MonoBehaviour
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(InvokeClickedEvent);
+        _button.onClick.AddListener(PlayMusic);
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(InvokeClickedEvent);
+        _button.onClick.RemoveListener(PlayMusic);
     }
 
-    private void InvokeClickedEvent() =>
-        Clicked?.Invoke(this);
+    private void PlayMusic()
+    {
+        _buttonsSoundSource.PlayOneShot(_clip);
+    }
 }
